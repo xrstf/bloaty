@@ -18,6 +18,7 @@ cc -O2 -Wall -o bloaty bloaty.c
 ...
 ```
 
+Give the amount to eat as the first argument (default is `1Mi`), e.g. `./bloaty 512Ki`.
 Allowed units are K, M, Ki and Mi. If no unit is given, amount is in bytes.
 
 A Docker image is provided as well:
