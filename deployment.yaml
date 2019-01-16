@@ -1,0 +1,32 @@
+# This is an example deployment for use in a Kubernetes cluster.
+# Change the bloaty arg to increase/decrease the amount of memory
+# eaten per second or adjust the resource limits.
+# Deploy via
+#
+#   kubectl apply -f deployment.yaml
+
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  labels:
+    app: bloaty
+  name: bloaty
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bloaty
+  template:
+    metadata:
+      labels:
+        app: bloaty
+    spec:
+      terminationGracePeriodSeconds: 0
+      containers:
+      - image: xrstf/bloaty:latest
+        args:
+          - 250Ki
+        name: bloaty
+        resources:
+          limits:
+            memory: 50Mi
